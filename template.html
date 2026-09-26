@@ -1,0 +1,1973 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Offline Tổng Kết Mùa 9 - Thử Thách 100 Ngày "Vì Tiền - Không Vì Công Lý"</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #0d5c3e;
+      --primary-dark: #062b1e;
+      --primary-light: #168a5e;
+      --primary-subtle: #e8f5ed;
+      --amber: #f59e0b;
+      --amber-dark: #d97706;
+      --amber-subtle: #fef3c7;
+      --red-accent: #e11d48;
+      --dark: #0f172a;
+      --gray-50: #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-600: #475569;
+      --gray-800: #1e293b;
+      --white: #ffffff;
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+      --shadow-md: 0 6px 18px rgba(0,0,0,0.08);
+      --shadow-lg: 0 14px 35px rgba(13,92,62,0.14);
+      --shadow-xl: 0 20px 50px rgba(0,0,0,0.18);
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-full: 9999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--gray-50);
+      color: var(--gray-800);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Top Sticky Navigation */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 10px 0;
+    }
+    .top-bar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand-logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .brand-logo-img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      border: 2px solid var(--amber);
+    }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-title {
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--primary);
+      line-height: 1.15;
+    }
+    .brand-subtitle {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--amber-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .btn-vote-nav {
+      background: linear-gradient(135deg, var(--amber), var(--amber-dark));
+      color: white;
+      text-decoration: none;
+      padding: 8px 20px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 14px rgba(217, 119, 6, 0.35);
+      transition: all 0.2s ease;
+    }
+    .btn-vote-nav:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(217, 119, 6, 0.45);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      background: linear-gradient(155deg, #051c14 0%, #0d5c3e 40%, #174d39 100%);
+      color: white;
+      padding: 60px 0 80px 0;
+      border-bottom-left-radius: 36px;
+      border-bottom-right-radius: 36px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      left: -60px;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(22, 138, 94, 0.35) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 36px;
+      align-items: center;
+    }
+    @media (max-width: 860px) {
+      .hero-layout {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .trip-meta-tags, .hero-cta-group {
+        justify-content: center;
+      }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      color: #fde047;
+    }
+    .hero-badge .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #fde047;
+      box-shadow: 0 0 8px #fde047;
+      animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    .slogan-highlight {
+      display: inline-block;
+      font-weight: 900;
+      font-size: 1.15rem;
+      color: #fef08a;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 4.5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .hero h1 .highlight {
+      background: linear-gradient(120deg, #fde047, #f59e0b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p.lead {
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      color: #d1fae5;
+      margin-bottom: 26px;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    .hero-logo-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(16px);
+      border: 2px solid rgba(255, 255, 255, 0.18);
+      border-radius: var(--radius-lg);
+      padding: 30px 24px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    }
+    .hero-logo-img {
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--amber);
+      box-shadow: 0 8px 30px rgba(245, 158, 11, 0.35);
+      margin-bottom: 16px;
+      transition: transform 0.3s ease;
+    }
+    .hero-logo-img:hover {
+      transform: scale(1.05) rotate(2deg);
+    }
+    .hero-logo-title {
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .hero-logo-sub {
+      color: #fef08a;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .trip-meta-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+    .meta-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      padding: 10px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--amber), var(--amber-dark));
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: var(--radius-full);
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 24px rgba(245, 158, 11, 0.4);
+      transition: all 0.25s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(245, 158, 11, 0.55);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.12);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 14px 24px;
+      border-radius: var(--radius-full);
+      font-size: 1.02rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 55px 0;
+    }
+    .section-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 40px auto;
+    }
+    .section-tag {
+      display: inline-block;
+      color: var(--primary-light);
+      background: var(--primary-subtle);
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--gray-600);
+    }
+
+    /* Season 9 Spirit Banner */
+    .spirit-box {
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+      border: 2px dashed #f59e0b;
+      border-radius: var(--radius-lg);
+      padding: 26px 30px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    @media (max-width: 720px) {
+      .spirit-box {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+    .spirit-icon {
+      font-size: 3rem;
+      flex-shrink: 0;
+    }
+    .spirit-text h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #92400e;
+      margin-bottom: 6px;
+    }
+    .spirit-text p {
+      font-size: 0.96rem;
+      color: #78350f;
+      line-height: 1.5;
+    }
+
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+    }
+    .feature-card {
+      background: white;
+      padding: 24px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-200);
+      transition: all 0.25s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-light);
+    }
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--primary-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 14px;
+      color: var(--primary);
+    }
+    .feature-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--dark);
+    }
+    .feature-card p {
+      font-size: 0.92rem;
+      color: var(--gray-600);
+    }
+
+    /* OPTIONS COMPARISON */
+    .options-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      margin-top: 15px;
+    }
+    @media (max-width: 840px) {
+      .options-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .option-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 32px 26px;
+      border: 2px solid var(--gray-200);
+      box-shadow: var(--shadow-md);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+    }
+    .option-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .option-card.option-1 {
+      border-color: #a7f3d0;
+    }
+    .option-card.option-1.active-glow {
+      border-color: var(--primary);
+      box-shadow: 0 10px 30px rgba(13,92,62,0.12);
+    }
+    .option-card.option-2 {
+      border-color: #fed7aa;
+    }
+    .option-card.option-2.active-glow {
+      border-color: var(--amber-dark);
+      box-shadow: 0 10px 30px rgba(245, 158, 11, 0.18);
+    }
+
+    .option-ribbon {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .ribbon-green {
+      background: #d1fae5;
+      color: #065f46;
+    }
+    .ribbon-amber {
+      background: #ffedd5;
+      color: #9a3412;
+    }
+
+    .option-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+      color: var(--dark);
+    }
+    .option-subtitle {
+      font-size: 0.95rem;
+      color: var(--gray-600);
+      margin-bottom: 18px;
+    }
+
+    .price-box {
+      background: var(--gray-50);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-bottom: 22px;
+      border: 1px dashed var(--gray-200);
+    }
+    .price-label {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      color: var(--gray-600);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .price-val {
+      font-size: 2.1rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin: 4px 0;
+    }
+    .price-val.green {
+      color: var(--primary);
+    }
+    .price-val.amber {
+      color: var(--amber-dark);
+    }
+    .price-note {
+      font-size: 0.82rem;
+      color: var(--gray-600);
+    }
+
+    .option-perks {
+      list-style: none;
+      margin-bottom: 28px;
+      flex-grow: 1;
+    }
+    .option-perks li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.96rem;
+      margin-bottom: 12px;
+      color: #334155;
+    }
+    .option-perks li .check-icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-top: 2px;
+    }
+    .check-green {
+      background: #d1fae5;
+      color: #065f46;
+    }
+    .check-amber {
+      background: #ffedd5;
+      color: #9a3412;
+    }
+
+    .btn-choose {
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .btn-choose-1 {
+      background: var(--primary);
+      color: white;
+    }
+    .btn-choose-1:hover {
+      background: var(--primary-dark);
+    }
+    .btn-choose-2 {
+      background: var(--amber-dark);
+      color: white;
+    }
+    .btn-choose-2:hover {
+      background: #b45309;
+    }
+
+    /* Comparison Table */
+    .table-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-200);
+      margin-top: 32px;
+      overflow-x: auto;
+    }
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+    .comp-table th, .comp-table td {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .comp-table th {
+      background: var(--gray-50);
+      font-weight: 700;
+      color: var(--dark);
+    }
+    .comp-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Food Showcase */
+    .food-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--gray-200);
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 0;
+    }
+    @media (max-width: 840px) {
+      .food-card {
+        grid-template-columns: 1fr;
+      }
+    }
+    .food-image-wrapper {
+      position: relative;
+      background: #1e293b;
+      min-height: 380px;
+    }
+    .food-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .food-badge-overlay {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      background: rgba(0, 0, 0, 0.72);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .food-content {
+      padding: 34px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .food-content h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .food-subtitle {
+      color: var(--primary-light);
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+    }
+    .dish-items {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+    @media (max-width: 520px) {
+      .dish-items {
+        grid-template-columns: 1fr;
+      }
+    }
+    .dish-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: var(--gray-800);
+      background: var(--gray-50);
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--gray-200);
+    }
+
+    /* Timeline */
+    .tabs-nav {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .tab-btn {
+      padding: 12px 24px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--gray-200);
+      background: white;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--gray-600);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .tab-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(13,92,62,0.25);
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+      border-left: 2px solid #cbd5e1;
+      margin: 10px 0 20px 10px;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 24px;
+    }
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+    .timeline-dot {
+      position: absolute;
+      left: -35px;
+      top: 3px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 3px solid white;
+      box-shadow: 0 0 0 2px var(--primary);
+    }
+    .timeline-time {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--primary-light);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .timeline-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+    .timeline-desc {
+      font-size: 0.92rem;
+      color: var(--gray-600);
+    }
+
+    /* VOTING POLL */
+    .vote-section {
+      background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+      border-radius: var(--radius-lg);
+      border: 2px solid #bbf7d0;
+      padding: 40px 30px;
+      box-shadow: var(--shadow-lg);
+      margin-top: 20px;
+    }
+    .poll-form-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 32px;
+    }
+    @media (max-width: 840px) {
+      .poll-form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--gray-200);
+      background: white;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(13,92,62,0.15);
+    }
+
+    .radio-card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .radio-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: white;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      border: 2px solid var(--gray-200);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .radio-card:hover {
+      border-color: var(--primary-light);
+      background: #f8fafc;
+    }
+    .radio-card input[type="radio"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+    .radio-card-content {
+      flex-grow: 1;
+    }
+    .radio-title {
+      font-weight: 700;
+      font-size: 0.96rem;
+      color: var(--dark);
+    }
+    .radio-desc {
+      font-size: 0.83rem;
+      color: var(--gray-600);
+    }
+
+    .poll-results-card {
+      background: white;
+      border-radius: var(--radius-md);
+      padding: 22px;
+      border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-sm);
+    }
+    .poll-results-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .total-badge {
+      background: var(--primary-subtle);
+      color: var(--primary);
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+    }
+
+    .vote-bar-wrap {
+      margin-bottom: 14px;
+    }
+    .vote-bar-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--dark);
+    }
+    .vote-progress-track {
+      width: 100%;
+      height: 10px;
+      background: var(--gray-100);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+    .vote-progress-fill {
+      height: 100%;
+      border-radius: var(--radius-full);
+      transition: width 0.4s ease;
+    }
+    .fill-opt1 { background: linear-gradient(90deg, #10b981, #059669); }
+    .fill-opt2 { background: linear-gradient(90deg, #f59e0b, #d97706); }
+    .fill-optBoth { background: linear-gradient(90deg, #3b82f6, #2563eb); }
+    .fill-optBusy { background: linear-gradient(90deg, #94a3b8, #64748b); }
+
+    .voters-list-box {
+      max-height: 160px;
+      overflow-y: auto;
+      margin-top: 14px;
+      padding: 10px;
+      background: var(--gray-50);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+    }
+    .voter-badge {
+      display: inline-block;
+      padding: 4px 8px;
+      margin: 2px;
+      border-radius: 6px;
+      font-weight: 600;
+      background: white;
+      border: 1px solid var(--gray-200);
+    }
+
+    .action-btn-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .btn-copy-zalo {
+      flex: 1;
+      padding: 10px 14px;
+      background: #0284c7;
+      color: white;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .btn-copy-zalo:hover {
+      background: #0369a1;
+    }
+    .btn-reset-poll {
+      padding: 10px 14px;
+      background: transparent;
+      color: var(--gray-600);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #1e293b;
+      color: white;
+      padding: 12px 20px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      font-weight: 600;
+      font-size: 0.92rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 1000;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+    #toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      background: var(--dark);
+      color: #94a3b8;
+      padding: 45px 0 35px 0;
+      text-align: center;
+      margin-top: 60px;
+      font-size: 0.9rem;
+    }
+    footer .footer-title {
+      color: white;
+      font-weight: 800;
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Sticky Navigation -->
+  <header class="top-bar">
+    <div class="container top-bar-inner">
+      <a href="#" class="brand-logo-wrap">
+        <img src="{{LOGO_B64_PLACEHOLDER}}" alt="100-Day Challenge Logo" class="brand-logo-img" />
+        <div class="brand-text">
+          <div class="brand-title">OFFLINE MÙA 9 • 100-DAY CHALLENGE</div>
+          <div class="brand-subtitle">VÌ TIỀN - KHÔNG VÌ CÔNG LÝ</div>
+        </div>
+      </a>
+      <a href="#vote-section" class="btn-vote-nav">
+        🗳️ Bình chọn ngay
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-layout">
+        <div>
+          <div class="hero-badge">
+            <span class="dot"></span> GALA OFFLINE TỔNG KẾT MÙA 9
+          </div>
+          <div class="slogan-highlight">
+            ⚡ THỬ THÁCH 100 NGÀY: "VÌ TIỀN - KHÔNG VÌ CÔNG LÝ"
+          </div>
+          <h1>
+            Đại Hội Vượt Thác & Xả Hơi <br />
+            <span class="highlight">Suối Cửa Tử – Đông Tam Đảo</span>
+          </h1>
+          <p class="lead">
+            Trải qua 100 ngày kỷ luật sắt cùng những đường bơi và cung chạy bộ mỗi ngày, vượt qua bao giọt mồ hôi và những pha nộp phạt nhớ đời, đã đến lúc hội quân xả stress! <strong>Chương trình mở rộng và chào đón tất cả mọi người</strong> (cả những ai không tham gia Mùa 9 cũng được hoan nghênh tham gia). <strong>Kinh phí chuyến đi được chia đều công bằng cho tất cả những ai tham gia trekking!</strong>
+          </p>
+
+          <div class="trip-meta-tags">
+            <div class="meta-tag">
+              <span>📅</span>
+              <span>Thời gian: <strong>10 – 11/10/2026</strong></span>
+            </div>
+            <div class="meta-tag">
+              <span>📍</span>
+              <span>Địa điểm: <strong>Suối Cửa Tử – Thái Nguyên</strong></span>
+            </div>
+            <div class="meta-tag">
+              <span>🏊‍♂️</span>
+              <span>Không biết bơi: <strong>Quẩy tẹt ga 100%</strong> (Áo phao + Porter kèm)</span>
+            </div>
+          </div>
+
+          <div class="hero-cta-group">
+            <a href="#options-section" class="btn-primary">
+              <span>Vote Chọn Phương Án</span>
+              <span>↓</span>
+            </a>
+            <a href="#food-section" class="btn-secondary">
+              <span>🍗 Mâm Cơm Đãi Chiến Binh</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Logo Card Right Column -->
+        <div>
+          <div class="hero-logo-card">
+            <img src="{{LOGO_B64_PLACEHOLDER}}" alt="100-Day Challenge: For Money - Not For Justice" class="hero-logo-img" />
+            <div class="hero-logo-title">100-DAY CHALLENGE</div>
+            <div class="hero-logo-sub">FOR MONEY - NOT FOR JUSTICE</div>
+            <p style="font-size: 0.85rem; color: #cbd5e1; margin-top: 8px;">
+              Chúc mừng các chiến binh đã hoàn thành chặng đường Mùa 9 xuất sắc!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Spirit of Season 9 Banner -->
+  <section class="section" style="padding-top: 35px; padding-bottom: 10px;">
+    <div class="container">
+      <div class="spirit-box">
+        <div class="spirit-icon">🏆</div>
+        <div class="spirit-text">
+          <h3>TINH THẦN OFFLINE MÙA 9: "VÌ TIỀN - KHÔNG VÌ CÔNG LÝ"</h3>
+          <p>
+            100 ngày kiên trì bơi lội và chạy bộ, rèn luyện thể lực bền bỉ và giữ vững cam kết tài chính đã khép lại. Chuyến đi suối Cửa Tử lần này là dịp để chúng ta gặp gỡ trực tiếp, vinh danh những "chiến thần" kiên định nhất, chúc mừng những người đã bảo toàn được tiền cọc, và cùng nhau "tiêu xài" xứng đáng quỹ phạt của mùa giải!
+          </p>
+          <div style="margin-top: 12px; padding: 12px 16px; background: rgba(255, 255, 255, 0.9); border-radius: 10px; border-left: 4px solid var(--amber-dark); font-size: 0.94rem; color: #78350f;">
+            🤝 <strong>CHÀO ĐÓN TẤT CẢ MỌI NGƯỜI:</strong> Cả những anh chị em <strong>không tham gia Mùa 9</strong> (bạn bè, người thân, đồng nghiệp) đều được <strong>WELCOME 100%</strong> cùng tham gia lội suối, trượt thác cho đông vui! <strong>Kinh phí chuyến đi sẽ được chia đều công bằng cho tất cả những ai tham gia trekking.</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Highlights Bar -->
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🌊</div>
+          <h3>Máng Trượt Đá Kịch Tính</h3>
+          <p>Trượt nước tự nhiên trên máng đá trơn láng triệu năm, xua tan hoàn toàn áp lực và mệt mỏi.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🦺</div>
+          <h3>An Toàn Tuyệt Đối</h3>
+          <p>100% trang bị áo phao trợ nổi đạt chuẩn, dép rọ lội suối, có đội ngũ porter bản địa kèm sát từng người.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🍗</div>
+          <h3>Đại Tiệc Rừng Bên Suối</h3>
+          <p>Mâm cỗ 6 người thịnh soạn: Gà đồi nướng than hoa, thịt quay giòn bì, xôi nếp nương và hoa quả tươi mát.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏡</div>
+          <h3>Hoàng Nông Farm Tiện Nghi</h3>
+          <p>Phòng tắm nóng lạnh, máy sấy, dầu gội, bể bơi vô cực ngắm dãy Tam Đảo, thưởng trà An Vân trứ danh.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPTIONS COMPARISON SECTION -->
+  <section class="section" id="options-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">BÌNH CHỌN PHƯƠNG ÁN OFFLINE</span>
+        <h2 class="section-title">2 Lựa Chọn Cho Đại Hội Mùa 9</h2>
+        <p class="section-desc">
+          Mọi người xem kỹ quyền lợi của từng phương án để bỏ phiếu bên dưới nhé. <strong>Chuyến đi chào đón cả người ngoài Mùa 9</strong> và <strong>toàn bộ kinh phí sẽ được chia đều công bằng cho tất cả những ai tham gia</strong>! Đa số vote theo phương án nào team mình sẽ chốt theo phương án đó.
+        </p>
+      </div>
+
+      <div class="options-container">
+        <!-- Option 1: Đi trong ngày -->
+        <div class="option-card option-1 active-glow">
+          <span class="option-ribbon ribbon-green">Nhanh - Gọn - Tiết kiệm</span>
+          <div>
+            <h3 class="option-title">Phương Án 1: Đi Trong Ngày</h3>
+            <p class="option-subtitle">Khởi hành: <strong>Thứ Bảy, 10/10/2026</strong> (05:30 – 19:00)</p>
+
+            <div class="price-box">
+              <div class="price-label">Chi phí ước tính (Kinh phí chia đều)</div>
+              <div class="price-val green">~790.000 <span style="font-size: 1rem;">đ/người</span></div>
+              <div class="price-note">* Giá lẻ 990k - Đoàn đông chia đều sòng phẳng cho mỗi người tham gia</div>
+            </div>
+
+            <ul class="option-perks">
+              <li>
+                <span class="check-icon check-green">✓</span>
+                <div><strong>Lịch trình gọn gàng:</strong> Đi sáng sớm từ Hà Nội, chiều tối về lại nhà, Chủ Nhật nghỉ ngơi thong thả cùng gia đình.</div>
+              </li>
+              <li>
+                <span class="check-icon check-green">✓</span>
+                <div><strong>Trọn vẹn trải nghiệm suối:</strong> Vượt thác, trượt máng đá tự nhiên, nhảy thác cảm giác mạnh, bơi hẻm Cửa Tử.</div>
+              </li>
+              <li>
+                <span class="check-icon check-green">✓</span>
+                <div><strong>Ăn uống:</strong> 01 bữa trưa mâm cỗ dã ngoại bờ suối (6 người/mâm) + 01 bữa ăn nhẹ, thưởng trà An Vân sau trek.</div>
+              </li>
+              <li>
+                <span class="check-icon check-green">✓</span>
+                <div><strong>Dịch vụ kèm theo:</strong> Porter dẫn đường, xe ôm vào cửa rừng, áo phao, balo chống nước, dép rọ, phòng tắm nóng lạnh sạch sẽ.</div>
+              </li>
+              <li>
+                <span class="check-icon check-green">✓</span>
+                <div><strong>Ưu điểm lớn nhất:</strong> Tiết kiệm chi phí, không tốn thời gian ngủ đêm, dành cho ai bận việc ngày Chủ Nhật.</div>
+              </li>
+            </ul>
+          </div>
+
+          <a href="#vote-section" onclick="selectOptionInForm('option_1')" class="btn-choose btn-choose-1">
+            <span>Vote Đi 1 Ngày (790k)</span>
+            <span>➔</span>
+          </a>
+        </div>
+
+        <!-- Option 2: Đi 2 ngày 1 đêm -->
+        <div class="option-card option-2 active-glow">
+          <span class="option-ribbon ribbon-amber">Gala Đêm - Trọn vẹn</span>
+          <div>
+            <h3 class="option-title">Phương Án 2: Đi 2 Ngày 1 Đêm</h3>
+            <p class="option-subtitle">Khởi hành: <strong>Thứ Bảy & Chủ Nhật (10 – 11/10/2026)</strong></p>
+
+            <div class="price-box">
+              <div class="price-label">Chi phí ước tính</div>
+              <div class="price-val amber">~1.800k – 2.000k <span style="font-size: 1rem;">đ/người</span></div>
+              <div class="price-note">* Tùy loại phòng - Kinh phí tour chia đều công bằng cho tất cả người tham gia</div>
+            </div>
+
+            <ul class="option-perks">
+              <li>
+                <span class="check-icon check-amber">✓</span>
+                <div><strong>Đêm Gala Tổng Kết Mùa 9:</strong> Ăn tối tiệc Farm, giao lưu, vinh danh "chiến thần 100 ngày" & chia chác quỹ thưởng.</div>
+              </li>
+              <li>
+                <span class="check-icon check-amber">✓</span>
+                <div><strong>Chinh phục sâu 10 cửa thác:</strong> Không phải vội, tha hồ bơi lội, check-in hết các góc hẻm suối Cửa Tử.</div>
+              </li>
+              <li>
+                <span class="check-icon check-amber">✓</span>
+                <div><strong>Nghỉ đêm tại Hoàng Nông Farm:</strong> Bể bơi suối vô cực view núi rừng, ngủ phòng điều hòa tiện nghi.</div>
+              </li>
+              <li>
+                <span class="check-icon check-amber">✓</span>
+                <div><strong>Ăn uống trọn gói 3 bữa:</strong> 1 trưa suối + 1 tối tiệc Gala + 1 bữa sáng ngắm mây núi.</div>
+              </li>
+              <li>
+                <span class="check-icon check-amber">✓</span>
+                <div><strong>Sáng CN chạy trail đồi chè:</strong> Phát huy tinh thần thể thao bơi lội & chạy bộ suốt 100 ngày, dạo bước ngắm sương sớm La Bằng, thưởng trà An Vân rồi về.</div>
+              </li>
+            </ul>
+          </div>
+
+          <a href="#vote-section" onclick="selectOptionInForm('option_2')" class="btn-choose btn-choose-2">
+            <span>Vote Đi 2N1Đ (~1.800k)</span>
+            <span>➔</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Comparison Table -->
+      <div class="table-card">
+        <h4 style="margin-bottom: 14px; font-weight: 800; color: var(--dark); font-size: 1.15rem;">
+          📊 Bảng Tóm Tắt Khác Biệt Giữa 2 Lựa Chọn
+        </h4>
+        <table class="comp-table">
+          <thead>
+            <tr>
+              <th>Hạng mục dịch vụ</th>
+              <th style="color: var(--primary);">Phương án 1 (1 Ngày - 10/10)</th>
+              <th style="color: var(--amber-dark);">Phương án 2 (2N1Đ - 10-11/10)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Thời gian</strong></td>
+              <td>01 ngày (Thứ 7, về trong ngày)</td>
+              <td>02 ngày 01 đêm (Thứ 7 & Chủ Nhật)</td>
+            </tr>
+            <tr>
+              <td><strong>Cung trekking</strong></td>
+              <td>Trekking suối + Máng trượt đá + Nhảy thác</td>
+              <td>Trekking trọn vẹn 10 cửa sâu trong rừng</td>
+            </tr>
+            <tr>
+              <td><strong>Gala tổng kết Mùa 9</strong></td>
+              <td>Trao giải nhanh tại bữa trưa & chiều về</td>
+              <td><strong>Đại tiệc Gala tối</strong> vinh danh, giao lưu bia & BBQ</td>
+            </tr>
+            <tr>
+              <td><strong>Số bữa ăn</strong></td>
+              <td>1 bữa trưa suối dã ngoại + 1 bữa ăn nhẹ</td>
+              <td>3 bữa (1 trưa suối, 1 tối tiệc Gala Farm, 1 sáng)</td>
+            </tr>
+            <tr>
+              <td><strong>Lưu trú đêm</strong></td>
+              <td>Không (Tắm nóng lạnh rồi về)</td>
+              <td>01 đêm tại Hoàng Nông Farm (có điều hòa)</td>
+            </tr>
+            <tr>
+              <td><strong>Bể bơi vô cực & Đồi chè</strong></td>
+              <td>Chụp ảnh check-in nhanh</td>
+              <td>Bơi chill chiều + Sáng chạy trail đồi chè La Bằng</td>
+            </tr>
+            <tr>
+              <td><strong>Giá dự kiến</strong></td>
+              <td><strong style="color: var(--primary); font-size: 1.1rem;">~790.000 đ/người</strong></td>
+              <td><strong style="color: var(--amber-dark); font-size: 1.1rem;">~1.800.000 – 2.000.000 đ</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOD SHOWCASE SECTION -->
+  <section class="section" id="food-section" style="background: var(--gray-100);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">TIỆC ĂN MỪNG MÙA 9</span>
+        <h2 class="section-title">Mâm Cơm Dã Ngoại Đãi Chiến Binh Bên Suối</h2>
+        <p class="section-desc">
+          Bữa trưa đặc sản vùng núi Đông Tam Đảo được bày trên lá dong và giấy bạc giữa dòng suối mát lành, tiêu chuẩn 6 người/mâm no nê.
+        </p>
+      </div>
+
+      <div class="food-card">
+        <div class="food-image-wrapper">
+          <img src="{{IMG_B64_PLACEHOLDER}}" alt="Mâm cơm dã ngoại suối Cửa Tử 6 người" />
+          <div class="food-badge-overlay">📸 Mâm cơm thực tế phục vụ đoàn</div>
+        </div>
+        <div class="food-content">
+          <h3>Mâm Cơm 6 Người Thịnh Soạn</h3>
+          <p class="food-subtitle">Nạp lại 100% năng lượng sau chặng đường rèn luyện</p>
+
+          <div class="dish-items">
+            <div class="dish-item">
+              <span>🍗</span>
+              <span><strong>Gà đồi nướng</strong> than hoa vàng ươm</span>
+            </div>
+            <div class="dish-item">
+              <span>🥓</span>
+              <span><strong>Ba chỉ nướng</strong> giòn bì đậm đà</span>
+            </div>
+            <div class="dish-item">
+              <span>🥢</span>
+              <span><strong>Giò lụa truyền thống</strong> thái lát dày</span>
+            </div>
+            <div class="dish-item">
+              <span>🍚</span>
+              <span><strong>Xôi tím nếp nương</strong> thơm dẻo</span>
+            </div>
+            <div class="dish-item">
+              <span>🥜</span>
+              <span><strong>Muối vừng lạc</strong> rang thơm bùi béo</span>
+            </div>
+            <div class="dish-item">
+              <span>🥒</span>
+              <span><strong>Dưa chuột chẻ</strong> giòn ngọt mát</span>
+            </div>
+            <div class="dish-item">
+              <span>🍎</span>
+              <span><strong>Mận hậu / Táo đỏ</strong> tráng miệng</span>
+            </div>
+            <div class="dish-item">
+              <span>💧</span>
+              <span><strong>Nước khoáng</strong> đóng chai 500ml</span>
+            </div>
+          </div>
+
+          <p style="font-size: 0.92rem; color: var(--gray-600); line-height: 1.5;">
+            * Sau 100 ngày kiên trì bơi lội và chạy bộ kỷ luật, ngồi quây quần cùng anh em chiến binh bên suối đá róc rách, chén gà nướng và xôi tím chấm muối vừng thì không còn gì "đã" bằng!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ITINERARY DETAILS -->
+  <section class="section" id="itinerary-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">KẾ HOẠCH HÀNH TRÌNH</span>
+        <h2 class="section-title">Lịch Trình Chi Tiết</h2>
+        <p class="section-desc">Bấm vào từng tab để xem chi tiết mốc thời gian của từng phương án</p>
+      </div>
+
+      <div class="tabs-nav">
+        <button class="tab-btn active" onclick="switchItineraryTab('tab-day1', this)">Lịch Trình 1 Ngày (10/10)</button>
+        <button class="tab-btn" onclick="switchItineraryTab('tab-day2', this)">Lịch Trình 2N1Đ (10 - 11/10)</button>
+      </div>
+
+      <div id="tab-day1" class="tab-content-panel" style="background: white; border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm); border: 1px solid var(--gray-200);">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-time">05:30 – 08:00</div>
+            <div class="timeline-title">Hội quân tại Hà Nội – Lên xe đến Hoàng Nông Farm</div>
+            <div class="timeline-desc">Xe di chuyển cao tốc Hà Nội - Thái Nguyên khoảng 2 tiếng. Đến Farm tập kết, cất đồ và nhận trang bị.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-time">08:30 – 09:00</div>
+            <div class="timeline-title">Xe ôm chở vào chân núi – Bắt đầu lội suối</div>
+            <div class="timeline-desc">Porter phổ biến quy tắc an toàn, kiểm tra áo phao, bắt đầu vượt qua Cửa 1 ngắm dòng suối trong vắt.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-time">10:00 – 12:00</div>
+            <div class="timeline-title">Trượt máng đá tự nhiên & Nhảy thác rơi tự do</div>
+            <div class="timeline-desc">Chinh phục Cửa 2, tham gia trượt thác nước trên máng đá trơn láng tự nhiên, nhảy thác mát lạnh (có porter hỗ trợ).</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-time">12:30 – 13:45</div>
+            <div class="timeline-title">Ăn trưa dã ngoại mâm 6 người thịnh soạn bên suối</div>
+            <div class="timeline-desc">Nghỉ ngơi bên bờ đá rợp bóng cây, thưởng thức xôi tím, gà nướng, ba chỉ quay, chụp ảnh kỷ niệm tập thể Mùa 9.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-time">14:00 – 16:00</div>
+            <div class="timeline-title">Đi thuyền vượt hẻm Cửa Tử & Quay về Farm</div>
+            <div class="timeline-desc">Trải nghiệm đi thuyền hoặc bơi qua hẻm núi đá kỳ vĩ, thong thả lội suối ra cửa rừng đón xe ôm về Farm.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-time">16:00 – 16:45</div>
+            <div class="timeline-title">Tắm nóng lạnh, sấy tóc, ăn nhẹ & Thưởng trà</div>
+            <div class="timeline-desc">Tắm rửa thoải mái tại phòng tắm tiện nghi của Farm, thưởng thức trà An Vân đặc sản và bánh ăn nhẹ.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-time">17:00 – 19:00</div>
+            <div class="timeline-title">Lên xe về Hà Nội – Kết thúc chuyến đi tuyệt vời</div>
+            <div class="timeline-desc">Cả đoàn về lại Hà Nội vào buổi tối, sẵn sàng cho một ngày Chủ Nhật thảnh thơi tại nhà.</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-day2" class="tab-content-panel" style="display: none; background: white; border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-sm); border: 1px solid var(--gray-200);">
+        <h4 style="color: var(--amber-dark); font-weight: 800; margin-bottom: 16px;">🌟 NGÀY 1: CHINH PHỤC SÂU 10 CỬA & ĐẠI TIỆC GALA TỐI NGHỈ ĐÊM FARM</h4>
+        <div class="timeline" style="margin-bottom: 30px;">
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background: var(--amber-dark); box-shadow: 0 0 0 2px var(--amber-dark);"></div>
+            <div class="timeline-time">08:30 – 15:30</div>
+            <div class="timeline-title">Trekking sâu đến Cửa 10 suối Cửa Tử</div>
+            <div class="timeline-desc">Khám phá hệ thống 10 cửa suối hoang sơ, trượt thác, nhảy thác, ăn trưa bên bờ suối.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background: var(--amber-dark); box-shadow: 0 0 0 2px var(--amber-dark);"></div>
+            <div class="timeline-time">16:30 – 18:30</div>
+            <div class="timeline-title">Tắm bể bơi vô cực ngắm hoàng hôn Tam Đảo</div>
+            <div class="timeline-desc">Thư giãn cơ bắp trong làn nước mát tại Farm, ngắm hoàng hôn buông xuống núi rừng.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background: var(--amber-dark); box-shadow: 0 0 0 2px var(--amber-dark);"></div>
+            <div class="timeline-time">19:00 – 22:30</div>
+            <div class="timeline-title">Đại tiệc Gala Tổng Kết Mùa 9 & Vinh danh trao giải</div>
+            <div class="timeline-desc">Tiệc tối BBQ ấm cúng cùng cả team, trao thưởng chiến thần, chia quỹ, nâng ly chúc mừng tốt nghiệp Mùa 9.</div>
+          </div>
+        </div>
+
+        <h4 style="color: var(--primary); font-weight: 800; margin-bottom: 16px;">🍃 NGÀY 2: CHẠY TRAIL ĐỒI CHÈ LA BẰNG & THƯỞNG TRÀ AN VÂN</h4>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-time">05:30 – 07:30</div>
+            <div class="timeline-title">Chạy trail / Dạo bước ngắm sương sớm đồi chè</div>
+            <div class="timeline-desc">Khởi động ngày mới với cung chạy trail nhẹ nhàng trên đồi chè La Bằng xanh mướt ngút ngàn.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-time">08:00 – 10:30</div>
+            <div class="timeline-title">Ăn sáng & Không gian thưởng trà An Vân</div>
+            <div class="timeline-desc">Thưởng thức tách trà Thái Nguyên thượng hạng trong không gian thiền tịnh, thư thả chụp ảnh kỷ niệm.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-time">11:30 – 14:00</div>
+            <div class="timeline-title">Check-out & Thong thả trở về Hà Nội</div>
+            <div class="timeline-desc">Khép lại kỳ nghỉ 2N1Đ trọn vẹn, sẵn sàng cho những thử thách tiếp theo!</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- INTERACTIVE LIVE POLL SECTION -->
+  <section class="section" id="vote-section">
+    <div class="container">
+      <div class="vote-section">
+        <div class="section-header" style="margin-bottom: 30px;">
+          <span class="section-tag" style="background: #dcfce7; color: #15803d;">KHẢO SÁT CHIẾN BINH MÙA 9</span>
+          <h2 class="section-title">🗳️ Bỏ Phiếu Chọn Phương Án Offline (10 – 11/10)</h2>
+          <p class="section-desc">
+            Anh/chị/em vote để nhóm thống nhất theo số đông nhé! Kết quả hiển thị trực tiếp ngay bên dưới.
+          </p>
+        </div>
+
+        <!-- Commitment Warning Alert Box -->
+        <div style="background: #fff1f2; border: 2px solid #f43f5e; border-radius: 16px; padding: 18px 22px; margin-bottom: 28px; display: flex; align-items: flex-start; gap: 14px; box-shadow: 0 4px 12px rgba(244,63,94,0.12);">
+          <div style="font-size: 2rem; line-height: 1;">⚠️</div>
+          <div>
+            <div style="color: #9f1239; font-weight: 800; font-size: 1.05rem; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px;">
+              NGUYÊN TẮC BẮT BUỘC: ĐÃ VOTE THAM GIA LÀ KHÔNG ĐƯỢC THAY ĐỔI QUYẾT ĐỊNH!
+            </div>
+            <div style="color: #881337; font-size: 0.92rem; line-height: 1.55;">
+              Vì chuyến đi áp dụng <strong>kinh phí chia đều theo số người thực tế tham gia</strong> và Ban tổ chức phải <strong>đặt cọc trước</strong> để chốt xe di chuyển, giữ phòng nghỉ tại Farm, chuẩn bị mâm cơm dã ngoại và sắp xếp đội ngũ porter dẫn đường theo tỷ lệ an toàn. <br/>
+              👉 <strong>Mọi người vui lòng cân nhắc thật kỹ lịch trình cá nhân. Một khi đã vote tham gia, tuyệt đối KHÔNG đổi ý hay hủy kèo vì sẽ làm đội chi phí và đảo lộn kế hoạch của cả đoàn!</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="poll-form-grid">
+          <!-- Form -->
+          <form id="pollForm" onsubmit="submitVote(event)">
+            <div class="form-group">
+              <label class="form-label" for="voterName">👤 Họ & Tên người tham gia <span style="color: red;">*</span> <span style="font-size: 0.83rem; font-weight: 600; color: var(--primary);">(Chào đón cả người không tham gia Mùa 9 & bạn bè / người thân)</span></label>
+              <input type="text" id="voterName" class="form-control" placeholder="Ví dụ: Nguyễn Văn A (hoặc Bạn của Hà...)" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">🎯 Bạn chọn phương án Offline nào? <span style="color: red;">*</span></label>
+              <div class="radio-card-list">
+                <label class="radio-card" id="card_option_1">
+                  <input type="radio" name="voteOption" value="option_1" required />
+                  <div class="radio-card-content">
+                    <div class="radio-title">Phương Án 1: Đi trong ngày (Thứ 7 ngày 10/10)</div>
+                    <div class="radio-desc">Gọn lẹ, chi phí mềm (~790k), CN nghỉ ngơi ở nhà</div>
+                  </div>
+                </label>
+
+                <label class="radio-card" id="card_option_2">
+                  <input type="radio" name="voteOption" value="option_2" />
+                  <div class="radio-card-content">
+                    <div class="radio-title">Phương Án 2: Đi 2 ngày 1 đêm (10 – 11/10)</div>
+                    <div class="radio-desc">Đại tiệc Gala tối tổng kết, ngủ Farm, sáng chạy đồi chè (~1.800k)</div>
+                  </div>
+                </label>
+
+                <label class="radio-card" id="card_option_both">
+                  <input type="radio" name="voteOption" value="option_both" />
+                  <div class="radio-card-content">
+                    <div class="radio-title">🤝 Phương án nào mình cũng đi được!</div>
+                    <div class="radio-desc">Chỉ cần có mặt vui cùng anh em chiến binh Mùa 9</div>
+                  </div>
+                </label>
+
+                <label class="radio-card" id="card_option_busy">
+                  <input type="radio" name="voteOption" value="option_busy" />
+                  <div class="radio-card-content">
+                    <div class="radio-title">😢 Tiếc quá, mình bận không tham gia đợt này</div>
+                    <div class="radio-desc">(Xin tự nguyện gửi quà hoặc tài trợ quỹ bia!)</div>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="extraGuests">👥 Số người đi cùng (nếu dẫn theo bạn/người thân)</label>
+              <select id="extraGuests" class="form-control">
+                <option value="0">Đi 1 mình</option>
+                <option value="1">Đi cùng 1 người (+1)</option>
+                <option value="2">Đi cùng 2 người (+2)</option>
+                <option value="3">Đi cùng 3 người (+3)</option>
+                <option value="4">Đi nhóm đông hơn (ghi chú bên dưới)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="voterNote">💬 Ghi chú thêm (ăn chay, xe cộ, lời chúc mùa 9...)</label>
+              <input type="text" id="voterNote" class="form-control" placeholder="Ví dụ: Ăn chay / Tự đi xe máy / Chúc mừng Mùa 9 thành công..." />
+            </div>
+
+            <!-- Mandatory Commitment Checkbox -->
+            <div class="form-group" id="commitCheckboxGroup" style="margin-top: 15px;">
+              <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer; background: #fff8f8; border: 1.5px solid #fda4af; padding: 12px 14px; border-radius: var(--radius-sm);">
+                <input type="checkbox" id="commitCheck" required style="width: 18px; height: 18px; accent-color: #e11d48; margin-top: 2px; cursor: pointer;" />
+                <span style="font-size: 0.88rem; color: #9f1239; font-weight: 700; line-height: 1.45;">
+                  ⚠️ Tôi cam kết: Đã vote tham gia là CHẮC CHẮN ĐI, không thay đổi quyết định vì hiểu rõ việc hủy sẽ làm tăng chi phí và ảnh hưởng đến cả đoàn.
+                </span>
+              </label>
+            </div>
+
+            <button type="submit" id="submitVoteBtn" class="btn-primary" style="width: 100%; justify-content: center;">
+              <span>Gửi Bình Chọn Của Bạn</span>
+              <span>🚀</span>
+            </button>
+          </form>
+
+          <!-- Live Poll Results Card -->
+          <div class="poll-results-card">
+            <div class="poll-results-header">
+              <div>
+                <h4 style="font-size: 1.15rem; font-weight: 800; color: var(--dark);">Kết Quả Bình Chọn Mùa 9</h4>
+                <div id="syncStatus" style="font-size: 0.8rem; color: #15803d; font-weight: 700; display: flex; align-items: center; gap: 5px; margin-top: 3px;">
+                  🟢 Đang đồng bộ từ Google Sheets...
+                </div>
+              </div>
+              <div class="total-badge" id="totalVotesBadge">0 lượt vote</div>
+            </div>
+
+            <!-- Progress Bars -->
+            <div class="vote-bar-wrap">
+              <div class="vote-bar-header">
+                <span>Phương án 1 (1 Ngày - 790k)</span>
+                <span id="pctOpt1">0% (0)</span>
+              </div>
+              <div class="vote-progress-track">
+                <div id="barOpt1" class="vote-progress-fill fill-opt1" style="width: 0%;"></div>
+              </div>
+            </div>
+
+            <div class="vote-bar-wrap">
+              <div class="vote-bar-header">
+                <span>Phương án 2 (2N1Đ Gala - ~1.800k)</span>
+                <span id="pctOpt2">0% (0)</span>
+              </div>
+              <div class="vote-progress-track">
+                <div id="barOpt2" class="vote-progress-fill fill-opt2" style="width: 0%;"></div>
+              </div>
+            </div>
+
+            <div class="vote-bar-wrap">
+              <div class="vote-bar-header">
+                <span>PA nào cũng đi được</span>
+                <span id="pctOptBoth">0% (0)</span>
+              </div>
+              <div class="vote-progress-track">
+                <div id="barOptBoth" class="vote-progress-fill fill-optBoth" style="width: 0%;"></div>
+              </div>
+            </div>
+
+            <div class="vote-bar-wrap">
+              <div class="vote-bar-header">
+                <span>Bận không tham gia</span>
+                <span id="pctOptBusy">0% (0)</span>
+              </div>
+              <div class="vote-progress-track">
+                <div id="barOptBusy" class="vote-progress-fill fill-optBusy" style="width: 0%;"></div>
+              </div>
+            </div>
+
+            <!-- Voters List Container -->
+            <div style="margin-top: 20px;">
+              <div style="font-weight: 700; font-size: 0.9rem; margin-bottom: 6px; color: var(--dark);">
+                Danh sách thành viên đã bình chọn (từ Google Sheet):
+              </div>
+              <div class="voters-list-box" id="votersList">
+                <span style="color: var(--gray-600); font-style: italic;">Chưa có lượt vote nào. Hãy là người đầu tiên!</span>
+              </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="action-btn-row" style="flex-wrap: wrap; gap: 8px;">
+              <button type="button" onclick="copyZaloFormat()" class="btn-copy-zalo">
+                <span>📋 Copy kết quả gửi Zalo</span>
+              </button>
+              <button type="button" onclick="fetchVotesFromGoogleSheets(true)" class="btn-reset-poll" title="Làm mới dữ liệu từ Google Sheet" style="display: flex; align-items: center; gap: 4px; font-weight: 600;">
+                <span>🔄 Làm mới</span>
+              </button>
+              <a href="https://docs.google.com/spreadsheets/d/1mHQuoB6JsCIPu0Jg57RaU_mJUWKGteVyR3OxcDmNJko/edit?gid=0#gid=0" target="_blank" class="btn-reset-poll" style="text-decoration: none; color: #15803d; font-weight: 700; display: flex; align-items: center; gap: 4px;" title="Mở file Google Sheet xem trực tiếp">
+                <span>📊 Xem Google Sheet</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQS & PACKING LIST -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">CẨM NANG CHIẾN BINH</span>
+        <h2 class="section-title">Những Câu Hỏi & Đồ Dùng Cần Chuẩn Bị</h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3 style="color: var(--amber-dark);">🤝 Không tham gia Mùa 9 có được đi không?</h3>
+          <p>
+            <strong>Cực kỳ hoan nghênh và welcome 100%!</strong> Chuyến đi mở rộng cho tất cả anh chị em, bạn bè, người thân, đồng nghiệp. <strong>Kinh phí chuyến đi được chia đều công bằng cho tất cả những ai tham gia trekking</strong>, không phân biệt thành viên Mùa 9 hay khách mời!
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <h3 style="color: #e11d48;">🚨 Đã vote tham gia rồi có được đổi ý / hủy không?</h3>
+          <p>
+            <strong>Tuyệt đối KHÔNG được thay đổi quyết định!</strong> Tour suối Cửa Tử tính chi phí theo nguyên tắc chia đều cho những người tham gia, đồng thời Ban tổ chức phải đặt cọc trước phòng Farm, xe ôm trung chuyển, mâm cơm suối và ký hợp đồng với porter dẫn đường. Việc một người đổi ý hủy kèo sẽ làm đội chi phí của tất cả những người còn lại và làm đảo lộn kế hoạch của cả đoàn!
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <h3 style="color: var(--primary);">🏊 Không biết bơi có đi được không?</h3>
+          <p>
+            <strong>Chắc chắn 100% đi được!</strong> Ban tổ chức trang bị áo phao cứu sinh chất lượng cao có sức nổi cực tốt. Bạn chỉ cần thả lỏng người là nổi bồng bềnh, hơn nữa luôn có các anh porter địa phương bám sát hỗ trợ từng bước chân.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <h3 style="color: var(--primary);">🎒 Đi suối cần mang những gì?</h3>
+          <p>
+            Trang phục mau khô, đồ bơi, kính bơi (nếu có), kem chống nắng, túi chống nước cho điện thoại, kẹo ngậm/sô-cô-la nạp năng lượng nhanh. Không nên mang giày leo núi chống nước hoặc đồ jean dày nặng.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <h3 style="color: var(--primary);">🚿 Sau khi trek xong có chỗ tắm không?</h3>
+          <p>
+            Hoàng Nông Farm có hệ thống phòng tắm nóng lạnh sạch sẽ, sẵn khăn tắm, dầu gội, sữa tắm và máy sấy tóc để mọi người tắm giặt tinh tươm trước khi lên xe về Hà Nội.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Toast Notification -->
+  <div id="toast">
+    <span id="toastIcon">✅</span>
+    <span id="toastMsg">Bình chọn thành công!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-title">ĐẠI HỘI OFFLINE TỔNG KẾT MÙA 9 • 100-DAY CHALLENGE</div>
+      <p style="margin-bottom: 6px; font-weight: 700; color: #fef08a;">
+        "VÌ TIỀN - KHÔNG VÌ CÔNG LÝ" (FOR MONEY - NOT FOR JUSTICE)
+      </p>
+      <p style="margin-bottom: 12px;">
+        Trưởng đoàn: <strong>Nguyễn Hoàng Hà</strong> • Ban tổ chức địa phương: <strong>Hoàng Nông Farm</strong>
+      </p>
+      <p style="font-size: 0.82rem; color: #64748b;">
+        * Phương án nào đạt nhiều lượt bình chọn hơn sẽ được lấy làm phương án chính thức cho cả đoàn. Hạn chót biểu quyết: Trước ngày 05/10/2026.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const STORAGE_KEY = 'cuatu_100days_m9_votes_v2';
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzkMnkt-W58aCa9EgxR7FRss6eESVn2ueiDlbVl8CzKuAoPnZmf7pT10MZVCc7P_TLguA/exec';
+
+    function getVotes() {
+      const data = localStorage.getItem(STORAGE_KEY);
+      if (data) {
+        try {
+          return JSON.parse(data);
+        } catch(e) {
+          return [];
+        }
+      }
+      return [];
+    }
+
+    async function fetchVotesFromGoogleSheets(showNotification = false) {
+      const statusEl = document.getElementById('syncStatus');
+      if (statusEl) statusEl.innerHTML = '🔄 Đang đồng bộ từ Google Sheets...';
+      try {
+        const res = await fetch(GOOGLE_SCRIPT_URL);
+        const data = await res.json();
+        if (data && data.status === 'success' && Array.isArray(data.votes)) {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(data.votes));
+          renderResults(data.votes);
+          if (statusEl) statusEl.innerHTML = '🟢 Đã kết nối Google Sheets (Trực tiếp)';
+          if (showNotification) showToast('Đã cập nhật dữ liệu mới nhất từ Google Sheet!', '🔄');
+          return;
+        }
+      } catch (err) {
+        console.warn('Lỗi khi fetch từ Google Sheets, dùng cache:', err);
+        if (statusEl) statusEl.innerHTML = '🟡 Đang hiển thị bản lưu gần nhất';
+      }
+      renderResults(getVotes());
+    }
+
+    function switchItineraryTab(tabId, el) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content-panel').forEach(p => p.style.display = 'none');
+      
+      if (el) el.classList.add('active');
+      document.getElementById(tabId).style.display = 'block';
+    }
+
+    function selectOptionInForm(optValue) {
+      const radio = document.querySelector(`input[name="voteOption"][value="${optValue}"]`);
+      if (radio) {
+        radio.checked = true;
+        highlightRadioCard(optValue);
+      }
+    }
+
+    function highlightRadioCard(optValue) {
+      document.querySelectorAll('.radio-card').forEach(c => {
+        c.style.borderColor = 'var(--gray-200)';
+        c.style.background = 'white';
+      });
+      const targetCard = document.getElementById(`card_${optValue}`);
+      if (targetCard) {
+        targetCard.style.borderColor = 'var(--primary)';
+        targetCard.style.background = '#f0fdf4';
+      }
+    }
+
+    document.querySelectorAll('input[name="voteOption"]').forEach(r => {
+      r.addEventListener('change', (e) => {
+        highlightRadioCard(e.target.value);
+        const commitGrp = document.getElementById('commitCheckboxGroup');
+        const commitInput = document.getElementById('commitCheck');
+        if (e.target.value === 'option_busy') {
+          if (commitGrp) commitGrp.style.display = 'none';
+          if (commitInput) commitInput.required = false;
+        } else {
+          if (commitGrp) commitGrp.style.display = 'block';
+          if (commitInput) commitInput.required = true;
+        }
+      });
+    });
+
+    function showToast(msg, icon = '✅') {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMsg').innerText = msg;
+      document.getElementById('toastIcon').innerText = icon;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3400);
+    }
+
+    async function submitVote(e) {
+      e.preventDefault();
+      const name = document.getElementById('voterName').value.trim();
+      const optionInput = document.querySelector('input[name="voteOption"]:checked');
+      if (!name || !optionInput) {
+        showToast('Vui lòng nhập tên và chọn một phương án!', '⚠️');
+        return;
+      }
+      const option = optionInput.value;
+      const extra = parseInt(document.getElementById('extraGuests').value) || 0;
+      const note = document.getElementById('voterNote').value.trim();
+
+      // Check commitment if participant votes to attend
+      if (option !== 'option_busy') {
+        const commitCheck = document.getElementById('commitCheck');
+        if (commitCheck && !commitCheck.checked) {
+          showToast('Vui lòng tích chọn cam kết không đổi ý trước khi gửi!', '⚠️');
+          return;
+        }
+      }
+
+      const submitBtn = document.getElementById('submitVoteBtn');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Đang lưu vào Google Sheets...</span> <span>⏳</span>';
+      }
+
+      // 1. Post to Google Sheets (Web App)
+      try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({ name, option, extra, note })
+        });
+      } catch (err) {
+        console.warn('Lỗi khi gửi lên Google Sheets:', err);
+      }
+
+      // 2. Optimistic update local storage
+      const votes = getVotes();
+      const existingIdx = votes.findIndex(v => v.name && v.name.toLowerCase() === name.toLowerCase());
+      if (existingIdx >= 0) {
+        votes[existingIdx] = { name, option, extra, note };
+      } else {
+        votes.push({ name, option, extra, note });
+      }
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(votes));
+      renderResults(votes);
+
+      showToast(`Chiến binh ${name} đã gửi bình chọn vào Google Sheet thành công!`, '🎉');
+      document.getElementById('pollForm').reset();
+      highlightRadioCard('');
+
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>Gửi Bình Chọn Của Bạn</span> <span>🚀</span>';
+      }
+
+      // 3. Re-sync from Google Sheet after 1.2s to ensure consistency
+      setTimeout(() => {
+        fetchVotesFromGoogleSheets(false);
+      }, 1200);
+    }
+
+    function renderResults(customVotes) {
+      const votes = customVotes || getVotes();
+      const totalCount = votes.length;
+      document.getElementById('totalVotesBadge').innerText = `${totalCount} lượt vote`;
+
+      const counts = {
+        option_1: 0,
+        option_2: 0,
+        option_both: 0,
+        option_busy: 0
+      };
+
+      votes.forEach(v => {
+        if (counts[v.option] !== undefined) {
+          counts[v.option] += (1 + (Number(v.extra) || 0));
+        }
+      });
+
+      const totalPeople = Object.values(counts).reduce((a, b) => a + b, 0);
+
+      function calcPct(count) {
+        if (totalPeople === 0) return 0;
+        return Math.round((count / totalPeople) * 100);
+      }
+
+      const p1 = calcPct(counts.option_1);
+      const p2 = calcPct(counts.option_2);
+      const pBoth = calcPct(counts.option_both);
+      const pBusy = calcPct(counts.option_busy);
+
+      document.getElementById('pctOpt1').innerText = `${p1}% (${counts.option_1} người)`;
+      document.getElementById('pctOpt2').innerText = `${p2}% (${counts.option_2} người)`;
+      document.getElementById('pctOptBoth').innerText = `${pBoth}% (${counts.option_both} người)`;
+      document.getElementById('pctOptBusy').innerText = `${pBusy}% (${counts.option_busy} người)`;
+
+      document.getElementById('barOpt1').style.width = `${p1}%`;
+      document.getElementById('barOpt2').style.width = `${p2}%`;
+      document.getElementById('barOptBoth').style.width = `${pBoth}%`;
+      document.getElementById('barOptBusy').style.width = `${pBusy}%`;
+
+      const listContainer = document.getElementById('votersList');
+      if (votes.length === 0) {
+        listContainer.innerHTML = '<span style="color: var(--gray-600); font-style: italic;">Chưa có lượt vote nào trong Google Sheet. Hãy là người đầu tiên!</span>';
+        return;
+      }
+
+      const optNames = {
+        option_1: '🟢 1 Ngày (10/10)',
+        option_2: '🟠 2N1Đ Gala (10-11/10)',
+        option_both: '🔵 PA nào cũng đi',
+        option_busy: '⚪ Bận'
+      };
+
+      listContainer.innerHTML = votes.map(v => {
+        const extraNum = Number(v.extra) || 0;
+        const extraText = extraNum > 0 ? ` (+${extraNum})` : '';
+        const optLabel = optNames[v.option] || v.option;
+        return `<span class="voter-badge"><strong>${v.name}</strong>${extraText}: ${optLabel}</span>`;
+      }).join(' ');
+    }
+
+    function copyZaloFormat() {
+      const votes = getVotes();
+      if (votes.length === 0) {
+        showToast('Chưa có dữ liệu để copy!', '⚠️');
+        return;
+      }
+      let text = `🏆 KẾT QUẢ VOTE OFFLINE MÙA 9 - THỬ THÁCH 100 NGÀY "VÌ TIỀN - KHÔNG VÌ CÔNG LÝ" (10-11/10):\n`;
+      const counts = { option_1: 0, option_2: 0, option_both: 0, option_busy: 0 };
+      votes.forEach(v => counts[v.option] += (1 + (Number(v.extra) || 0)));
+      text += `1️⃣ PA 1 (Đi trong ngày - 790k): ${counts.option_1} người\n`;
+      text += `2️⃣ PA 2 (Đi 2N1Đ Gala - ~1.800k): ${counts.option_2} người\n`;
+      text += `3️⃣ PA nào cũng đi được: ${counts.option_both} người\n`;
+      text += `4️⃣ Bận không tham gia: ${counts.option_busy} người\n`;
+      text += `\n👉 Danh sách chiến binh (từ Google Sheet):\n`;
+      votes.forEach(v => {
+        const opt = v.option === 'option_1' ? 'Đi 1 ngày' : (v.option === 'option_2' ? 'Đi 2N1Đ Gala' : (v.option === 'option_both' ? 'Phương án nào cũng được' : 'Bận'));
+        const extraNum = Number(v.extra) || 0;
+        const extra = extraNum > 0 ? ` (+${extraNum})` : '';
+        text += `- ${v.name}${extra}: ${opt}${v.note ? ' (' + v.note + ')' : ''}\n`;
+      });
+      text += `\n📊 Link Google Sheet: https://docs.google.com/spreadsheets/d/1mHQuoB6JsCIPu0Jg57RaU_mJUWKGteVyR3OxcDmNJko/edit?gid=0#gid=0`;
+
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Đã copy danh sách vote vào clipboard!', '📋');
+      }).catch(() => {
+        showToast('Lỗi khi copy, bạn vui lòng copy thủ công.', '❌');
+      });
+    }
+
+    function resetAllVotes() {
+      if (confirm('Bạn có chắc chắn muốn làm mới dữ liệu từ Google Sheet không?')) {
+        fetchVotesFromGoogleSheets(true);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      fetchVotesFromGoogleSheets(false);
+    });
+  </script>
+</body>
+</html>
+</body>
+</html>
